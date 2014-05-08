@@ -156,7 +156,9 @@ class PayPal extends Nette\Object
 		$this->cancelUrl = $cancelUrl ?: $returnUrl;
 	}
 
-
+    public function setAccount($account) {
+        $this->account = $account;
+    }
 
 	/**
 	 * Main payment function

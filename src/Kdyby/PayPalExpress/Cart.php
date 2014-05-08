@@ -82,14 +82,20 @@ class Cart extends Nette\Object
 	 * @param int $amount
 	 * @param string $number
 	 */
-	public function addItem($price, $name, $amount = 1, $number = "")
+	public function addItem($price, $name, $amount = 1, $number = "", $category = "")
 	{
-		$this->items[] = array(
+		$item = array(
 			'AMT' => $price,
 			'QTY' => $amount,
 			'NAME' => $name,
 			'NUMBER' => $number
+
 		);
+        if($category) {
+            $item['ITEMCATEGORY0'] = $category;
+        }
+
+        $this->items[] = $item;
 	}
 
 
