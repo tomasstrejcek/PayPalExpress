@@ -103,7 +103,7 @@ class PayPal extends Nette\Object
 	 */
 	private $curlSender;
 
-
+    public $tax = 21.0;
 
 	/**
 	 * Obtain credentials at https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/e_howto_api_NVPAPIBasics
@@ -221,6 +221,7 @@ class PayPal extends Nette\Object
 			'TOKEN' => $token,
 		);
 		foreach ($details->getCarts() as $cart) {
+            $cart->tax = $this->tax;
 			$data += $cart->serialize($this->account, $this->currency, '0');
 		}
 
